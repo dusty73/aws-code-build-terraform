@@ -17,7 +17,7 @@ phases:
     commands:
       - cd "$CODEBUILD_SRC_DIR/workspaces/$WORKSPACE_NAME"
       - terraform init -input=false -backend-config=backend.hcl
-      - terraform plan -input=false
+      - terraform plan -input=false -out=${CODEBUILD_RESOLVED_SOURCE_VERSION}.tfplan
 
   post_build:
     commands:
@@ -25,4 +25,4 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
+    - '**/*.tfplan'
