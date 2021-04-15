@@ -3,5 +3,5 @@ module "sample" {
 }
 
 output "test" {
-  value = modules.test
+  value = module.sample.test
 }
